@@ -11,4 +11,210 @@
 <footer><div class="container foot"><span>GARAGEM ABERTA © 2026</span><span>Catálogo independente de consulta técnica</span></div></footer>
 <div id="modal" class="modal" aria-hidden="true"><div class="modalShade" data-close></div><article class="modalPanel"><button class="close" data-close aria-label="Fechar">×</button><div id="modalBody"></div></article></div>
 <aside id="compareBar" class="compareBar" hidden><span><b id="compareText">0 veículos selecionados</b><small>Selecione até 3 veículos para comparar</small></span><button id="doCompare" class="primary">Comparar agora</button><button id="clearCompare" class="outline">Limpar</button></aside>
-<script src="script.js"></script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Consulte e compare fichas técnicas de veículos comercializados no Brasil.">
+  <meta name="theme-color" content="#101b2b">
+  <title>Garagem Aberta | Fichas técnicas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="top">
+    <div class="container topin">
+      <a class="brand" href="#inicio" aria-label="Garagem Aberta - início">
+        <svg class="brandIcon" viewBox="0 0 64 64" role="img" aria-label="Ficha técnica com velocímetro">
+          <path d="M13 5h27l13 13v39a3 3 0 0 1-3 3H13a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4Z" fill="#F0F2F5" />
+          <path d="M40 5v12a2 2 0 0 0 2 2h11Z" fill="#40B4C4" />
+          <path d="M17 24h24M17 30h19" stroke="#AAB2BC" stroke-width="3" stroke-linecap="round" />
+          <path d="M17 47a15 15 0 0 1 30 0" fill="none" stroke="#F5B800" stroke-width="4" stroke-linecap="round" />
+          <path d="m32 46 10-7" stroke="#20252B" stroke-width="3.5" stroke-linecap="round" />
+          <circle cx="32" cy="46" r="3" fill="#20252B" />
+        </svg>
+        <span class="brandWords">
+          <strong>Garagem</strong>
+          <b>Aberta</b>
+        </span>
+      </a>
+      <nav>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#sobre">Sobre a base</a>
+        <button id="compareTop" class="outline">Comparar <span id="compareCount">0</span></button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="container heroGrid">
+        <div>
+          <p class="eyebrow">PESQUISE · CONSULTE · COMPARE</p>
+          <h1>Conheça cada detalhe.<br><em>Escolha com informação.</em></h1>
+          <p class="lead">Um catálogo de fichas técnicas de veículos vendidos no Brasil, reunindo modelos atuais, eletrificados e históricos.</p>
+          <a class="primary" href="#busca">Consultar veículo <span>→</span></a>
+        </div>
+        <div class="heroArt">
+          <div class="ring"></div>
+          <div class="carshape">▰</div>
+          <div class="specTag">DADOS TÉCNICOS<br><b>EM UM SÓ LUGAR</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quickSearch container" id="busca">
+      <div class="quickSearchHead">
+        <p class="eyebrow">CONSULTA EM QUATRO ETAPAS</p>
+        <h2>Encontre a ficha do seu veículo</h2>
+        <p>Selecione o tipo, a marca, o modelo e o ano para consultar ou comparar.</p>
+      </div>
+      <div class="cascadeGrid">
+        <label>
+          1. Tipo de veículo
+          <select id="searchType">
+            <option value="">Selecione o tipo</option>
+          </select>
+        </label>
+        <label>
+          2. Marca
+          <select id="searchBrand" disabled>
+            <option value="">Selecione primeiro o tipo</option>
+          </select>
+        </label>
+        <label>
+          3. Modelo
+          <select id="searchModel" disabled>
+            <option value="">Selecione primeiro a marca</option>
+          </select>
+        </label>
+        <label>
+          4. Ano
+          <select id="searchYear" disabled>
+            <option value="">Selecione primeiro o modelo</option>
+          </select>
+        </label>
+      </div>
+      <div class="cascadeActions">
+        <button id="viewTech" class="primary" disabled>Ver Ficha Técnica</button>
+        <button id="compareVehicle" class="secondary" disabled>Comparar Veículo</button>
+        <span id="cascadeHint" role="status">Preencha as quatro opções para liberar as ações.</span>
+      </div>
+    </section>
+
+    <section class="stats container">
+      <div><b id="totalCars">—</b><span>versões cadastradas</span></div>
+      <div><b id="totalBrands">—</b><span>marcas</span></div>
+      <div><b id="totalYears">—</b><span>anos cobertos</span></div>
+      <div><b>100%</b><span>busca e comparação</span></div>
+    </section>
+
+    <section class="catalog container" id="catalogo">
+      <div class="sectionHead">
+        <div>
+          <p class="eyebrow">BASE DE VEÍCULOS</p>
+          <h2>Encontre seu veículo</h2>
+          <p>Busque por marca, modelo, versão, motor ou ano.</p>
+        </div>
+        <button class="outline" id="clearFilters">Limpar filtros</button>
+      </div>
+
+      <div class="filters">
+        <label class="search">
+          ⌕ <input id="q" type="search" placeholder="Ex.: Corolla, 1.0 turbo, BYD..." autocomplete="off">
+        </label>
+        <select id="mainCategory">
+          <option value="">Todas as categorias principais</option>
+          <option value="motos">Motos</option>
+          <option value="carros">Carros</option>
+          <option value="vans_utilitarios">Vans e utilitários</option>
+          <option value="caminhoes">Caminhões</option>
+        </select>
+        <select id="brand">
+          <option value="">Todas as marcas</option>
+        </select>
+        <select id="category">
+          <option value="">Todas as categorias</option>
+        </select>
+        <select id="origin">
+          <option value="">Nacional e importado</option>
+          <option value="nacional">Nacional</option>
+          <option value="importado">Importado</option>
+        </select>
+        <select id="fuel">
+          <option value="">Todos os combustíveis</option>
+        </select>
+        <select id="year">
+          <option value="">Todos os anos</option>
+        </select>
+        <select id="sort">
+          <option value="name">Ordem alfabética</option>
+          <option value="yearDesc">Ano: mais recente</option>
+          <option value="yearAsc">Ano: mais antigo</option>
+          <option value="brand">Marca</option>
+        </select>
+      </div>
+
+      <div class="resultbar">
+        <span id="resultCount">Carregando catálogo…</span>
+        <div class="viewSwitch">
+          <button class="active" data-view="grid">▦</button>
+          <button data-view="list">☷</button>
+        </div>
+      </div>
+
+      <div id="cards" class="cards"></div>
+      <div id="empty" class="empty" hidden>
+        <b>Nenhum veículo encontrado.</b>
+        <p>Tente alterar os filtros ou o termo pesquisado.</p>
+      </div>
+    </section>
+
+    <section id="sobre" class="about">
+      <div class="container aboutGrid">
+        <div>
+          <p class="eyebrow">TRANSPARÊNCIA</p>
+          <h2>Informação técnica com origem identificada.</h2>
+          <p>Os dados são reunidos a partir de fontes oficiais, fichas de fabricantes e catálogos especializados. Cada registro informa sua origem e seu nível de preenchimento.</p>
+        </div>
+        <div class="sourceBox">
+          <b>Como interpretar os dados</b>
+          <p><span class="dot verified"></span> Consumo verificado no PBEV</p>
+          <p><span class="dot partial"></span> Ficha parcial: campos ainda não confirmados</p>
+          <p><span class="dot pending"></span> Dado não disponível: não foi preenchido por estimativa</p>
+          <a href="https://www.gov.br/inmetro/pt-br/assuntos/regulamentacao/avaliacao-da-conformidade/programa-brasileiro-de-etiquetagem/tabelas-de-eficiencia-energetica/veiculos-automotivos-pbe-veicular/" target="_blank" rel="noopener">Consultar fonte oficial do INMETRO ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <span>GARAGEM ABERTA © 2026</span>
+      <span>Catálogo independente de consulta técnica</span>
+    </div>
+  </footer>
+
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modalShade" data-close></div>
+    <article class="modalPanel">
+      <button class="close" data-close aria-label="Fechar">×</button>
+      <div id="modalBody"></div>
+    </article>
+  </div>
+
+  <aside id="compareBar" class="compareBar" hidden>
+    <span>
+      <b id="compareText">0 veículos selecionados</b>
+      <small>Selecione até 3 veículos para comparar</small>
+    </span>
+    <button id="doCompare" class="primary">Comparar agora</button>
+    <button id="clearCompare" class="outline">Limpar</button>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+
+</html><script src="script.js"></script></body></html>
