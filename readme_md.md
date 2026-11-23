@@ -15,7 +15,7 @@ Um catálogo automotivo interativo focado no mercado brasileiro. O **Garagem Abe
 
 O projeto está hospedado gratuitamente via **GitHub Pages** e pode ser acessado diretamente pelo navegador, sem precisar instalar nada:
 
-👉 **[Acesse o Garagem Aberta aqui](#)** *(Substitua o `#` pelo link do seu GitHub Pages após ativar nas configurações do repositório)*
+👉 **Acesse o Garagem Aberta aqui(https://rodrigoribeirodev13.github.io/garagem-aberta/)**
 
 ## 📸 Créditos das Imagens
 
